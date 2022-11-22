@@ -1,5 +1,8 @@
 import React from "react";
+import Number from "./Number";
 
 export default function NumberConverter({ number }) {
-  return <div>{number}</div>;
+  return (
+      <Number key={number} number={number} />
+  );
 }

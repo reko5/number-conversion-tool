@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Number() {
+export default function Number({number}) {
   return (
-    <div>Number</div>
+    <div>{number}</div>
   )
 }
