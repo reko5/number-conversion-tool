@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useRef, useEffect } from "react";
+import NumberConverter from "./NumberConverter";
 
 function App() {
+  const [number] = useState(['Itt lesz majd a string']);
+  const numberRef = useRef();
+
+  useEffect(() => {})
+
+  function handleConvertNumber(e) {
+    const number = numberRef.current.value;
+    if (number === "") return;
+    console.log(number);
+    numberRef.current.value = null;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <>Number Converter</>
+      <input ref={numberRef} type="number" />
+      <button onClick={handleConvertNumber}>Convert Number</button>
+      <NumberConverter number={number}/>
+    </>
   );
 }
 
