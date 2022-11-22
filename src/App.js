@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import NumberConverter from "./NumberConverter";
 
 function App() {
-  const [number] = useState(['Itt lesz majd a string']);
+  const [number] = useState(['String will be here']);
   const numberRef = useRef();
 
   useEffect(() => {})
