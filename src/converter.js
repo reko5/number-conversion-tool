@@ -66,7 +66,13 @@ export default function convertToString(num) {
   }
 
   function convert_hundreds(number) {
-    if (number > 99) {
+    if (number >= 100 && number < 1000 && number % 100 !== 0) {
+      return (
+        ones[Math.floor(number / 100)] +
+        " hundred and " +
+        convert_tens(number % 100)
+      );
+    } else if (number > 99) {
       return (
         ones[Math.floor(number / 100)] +
         " hundred " +
