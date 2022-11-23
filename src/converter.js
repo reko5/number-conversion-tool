@@ -1,4 +1,4 @@
-export default function toString(num) {
+export default function convertToString(num) {
   let ones = [
     "",
     "one",
@@ -37,7 +37,7 @@ export default function toString(num) {
   ];
 
   function convert(number) {
-    if (number === 0) return "zero";
+    if (number < 1 && number > -1) return "zero";
     else return convert_millions(number);
   }
 
