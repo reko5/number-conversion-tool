@@ -30,5 +30,8 @@ describe("Numbers converted to string based on british english.", () => {
     expect(Converter.convertToString(123456789)).toEqual(
       "one hundred and twenty-three million four hundred and fifty-six thousand seven hundred and eighty-nine"
     );
+    expect(Converter.convertToString(123456789123)).toEqual(
+      "one hundred and twenty-three billion four hundred and fifty-six million seven hundred and eighty-nine thousand one hundred and twenty-three"
+    );
   });
 });

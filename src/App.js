@@ -7,8 +7,8 @@ function App() {
 
   function handleNumberConverter() {
     const number = numberRef.current.value;
-    /*if (number === "" || number >= 1000000000)
-      return setString("Pleas type a number from 0 to 1.000.000.000.000!");*/
+    if (number === "" || number >= 1000000000000)
+      return setString("Pleas type a number from 0 to 1.000.000.000.000!");
     setString((newString) => {
       return (newString = convertToString(number));
     });
