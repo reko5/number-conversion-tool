@@ -37,13 +37,49 @@ let teens = [
 
 export function convertToString(number) {
   if (number < 1 && number > -1) return "zero";
-  else return convertMillions(number);
+  else return convertBillions(number);
+}
+
+function convertBillions(number) {
+  if (number >= 1000000000 && number % 10000000000 === 0) {
+    return (
+      convertMillions(Math.floor(number / 1000000000)) +
+      " billion" +
+      convertMillions(number % 1000000000)
+    );
+  } else if (number >= 1000000000 && number % 1000000000 < 100000000) {
+    return (
+      convertMillions(Math.floor(number / 1000000000)) +
+      " billion and " +
+      convertMillions(number % 1000000000)
+    );
+  } else if (number >= 1000000000 && number % 1000000000 < 1000000000) {
+    return (
+      convertMillions(Math.floor(number / 1000000000)) +
+      " billion " +
+      convertMillions(number % 1000000000)
+    );
+  } else {
+    return convertMillions(number);
+  }
 }
 
 function convertMillions(number) {
-  if (number >= 1000000) {
+  if (number >= 1000000 && number % 1000000 === 0) {
     return (
-      convertMillions(Math.floor(number / 1000000)) +
+      convertThousands(Math.floor(number / 1000000)) +
+      " million" +
+      convertThousands(number % 1000000)
+    );
+  } else if (number >= 1000000 && number % 1000000 < 100000) {
+    return (
+      convertThousands(Math.floor(number / 1000000)) +
+      " million and " +
+      convertThousands(number % 1000000)
+    );
+  } else if (number >= 1000000 && number % 1000000 < 1000000) {
+    return (
+      convertThousands(Math.floor(number / 1000000)) +
       " million " +
       convertThousands(number % 1000000)
     );
@@ -53,7 +89,13 @@ function convertMillions(number) {
 }
 
 function convertThousands(number) {
-  if (number >= 1000 && number % 1000 < 100) {
+  if (number >= 1000 && number % 1000 === 0) {
+    return (
+      convertHundreds(Math.floor(number / 1000)) +
+      " thousand" +
+      convertHundreds(number % 1000)
+    );
+  } else if (number >= 1000 && number % 1000 < 100) {
     return (
       convertHundreds(Math.floor(number / 1000)) +
       " thousand and " +
