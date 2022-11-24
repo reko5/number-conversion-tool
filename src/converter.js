@@ -53,16 +53,16 @@ function convertMillions(number) {
 }
 
 function convertThousands(number) {
-  if (number >= 1000 && number % 1000 !== 0) {
-    return (
-      convertHundreds(Math.floor(number / 1000)) +
-      " thousand " +
-      convertHundreds(number % 1000)
-    );
-  } else if (number >= 1000) {
+  if (number >= 1000 && number % 1000 < 100) {
     return (
       convertHundreds(Math.floor(number / 1000)) +
       " thousand and " +
+      convertHundreds(number % 1000)
+    );
+  } else if (number >= 1000 && number % 1000 < 1000) {
+    return (
+      convertHundreds(Math.floor(number / 1000)) +
+      " thousand " +
       convertHundreds(number % 1000)
     );
   } else {
@@ -79,7 +79,7 @@ function convertHundreds(number) {
     );
   } else if (number > 99) {
     return (
-      ones[Math.floor(number / 100)] + " hundred " + convertTens(number % 100)
+      ones[Math.floor(number / 100)] + " hundred" + convertTens(number % 100)
     );
   } else {
     return convertTens(number);
@@ -89,6 +89,7 @@ function convertHundreds(number) {
 function convertTens(number) {
   if (number < 10) return ones[number];
   else if (number >= 10 && number < 20) return teens[number - 10];
+  else if (number % 10 === 0) return tens[number / 10];
   else {
     return tens[Math.floor(number / 10)] + "-" + ones[number % 10];
   }
