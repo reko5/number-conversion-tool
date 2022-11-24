@@ -1,7 +1,7 @@
 const converter = require("./Converter");
 
-describe("numbers converted to string based on british english", () => {
-  test("all test need to be fulfilled", () => {
+describe("Numbers converted to string based on british english.", () => {
+  test("All test need to be fulfilled.", () => {
     expect(converter.convertToString(7)).toEqual("seven");
     expect(converter.convertToString(42)).toEqual("forty-two");
     expect(converter.convertToString(1999)).toEqual("one thousand nine hundred and ninety-nine");
