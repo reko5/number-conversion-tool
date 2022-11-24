@@ -1,12 +1,9 @@
-import React, { useState, useRef /*useEffect*/ } from "react";
-import NumberConverter from "./NumberConverter";
-import convertToString from "./converter";
+import React, { useState, useRef } from "react";
+import convertToString from "./Converter";
 
 function App() {
   const [number, setString] = useState();
   const numberRef = useRef();
-
-  //useEffect(() => {});
 
   function handleNumberConverter() {
     const number = numberRef.current.value;
@@ -23,7 +20,7 @@ function App() {
       <>Instruction: Only works with whole numbers between 0 and 1000000000!</>
       <input ref={numberRef} type="number" />
       <button onClick={handleNumberConverter}>Convert Number</button>
-      <NumberConverter number={number} />
+      <div>{number}</div>
     </>
   );
 }
