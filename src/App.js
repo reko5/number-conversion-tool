@@ -17,18 +17,28 @@ function App() {
   const numberRef = useRef();
 
   function handleKeyDown(event) {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       return handleNumberConverter();
     }
-  };
+  }
 
   function handleNumberConverter() {
     const number = numberRef.current.value;
-    if (number === "" || number > 999999999999)
+    const targetDiv = document.getElementById("popIfClicked");
+    const colorOfDiv = document.getElementById("string");
+
+    if (number === "" || number > 999999999999) {
+      targetDiv.style.display = "none";
+      colorOfDiv.style.background = "red";
       return setString("Please type a number from 0 to 999.999.999.999!");
+    }
+
     setString((newString) => {
+      targetDiv.style.display = "block";
+      colorOfDiv.style.background = "green";
       return (newString = convertToString(number));
     });
+
     numberRef.current.value = null;
   }
 
@@ -76,17 +86,11 @@ function App() {
           </Col>
         </Row>
         <Row className="justify-content-md-center">
-          <div>Your number as a string is:</div>
+          <div id="popIfClicked">Your number as a string is:</div>
         </Row>
         <Row className="justify-content-md-center">
           <Col>
-            <div
-              id="string"
-              className="bg-success"
-              placeholder="Enter your number here"
-            >
-              {number}
-            </div>
+            <div id="string">{number}</div>
           </Col>
         </Row>
       </Card>

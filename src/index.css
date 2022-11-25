@@ -14,4 +14,9 @@ h1 {
 #string {
   font-size: x-large;
   color: white;
+  background-color: green;
+}
+
+#popIfClicked {
+  display: none;
 }
