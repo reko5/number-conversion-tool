@@ -89,7 +89,15 @@ function convertMillions(number) {
 }
 
 function convertThousands(number) {
-  if (number >= 1000 && number % 1000 === 0) {
+  if (number > 1100 && number < 2000) {
+    // That "if" for the "british english" between 1100 and 2000.
+    return (
+      teens[Math.floor(number / 100 - 10)] +
+      " hundred and " +
+      convertTens(number % 100)
+    );
+    // 1000 to 1100 left out, because british people only use that style for years/dates in that interval and not for standard numbers.
+  } else if (number >= 1000 && number % 1000 === 0) {
     return (
       convertThousands(Math.floor(number / 1000)) +
       " thousand" +
@@ -121,7 +129,9 @@ function convertHundreds(number) {
     );
   } else if (number > 99) {
     return (
-      ones[Math.floor(number / 100)] + " hundred" + convertHundreds(number % 100)
+      ones[Math.floor(number / 100)] +
+      " hundred" +
+      convertHundreds(number % 100)
     );
   } else {
     return convertTens(number);
