@@ -1,4 +1,4 @@
-let ones = [
+const ones = [
   "",
   "one",
   "two",
@@ -10,7 +10,7 @@ let ones = [
   "eight",
   "nine",
 ];
-let tens = [
+const tens = [
   "",
   "",
   "twenty",
@@ -22,7 +22,7 @@ let tens = [
   "eighty",
   "ninety",
 ];
-let teens = [
+const teens = [
   "ten",
   "eleven",
   "twelve",
