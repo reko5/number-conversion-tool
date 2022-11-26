@@ -36,16 +36,15 @@ const teens = [
 ];
 
 export function convertToString(number) {
+  if (number < 1 && number > -1) return "zero";
+
   const numberAsString = number.toString();
 
   if (numberAsString[0] === "-") {
     let absNumber = numberAsString.slice(1, numberAsString.length);
 
     return "minus " + convertBillions(Number(absNumber) % 1000000000000);
-  }
-
-  if (number < 1 && number > -1) return "zero";
-  else return convertBillions(number);
+  } else return convertBillions(number);
 }
 
 function convertBillions(number) {
