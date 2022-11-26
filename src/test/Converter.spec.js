@@ -2,6 +2,25 @@ const Converter = require("../Converter");
 
 describe("Numbers converted to string based on british english.", () => {
   test("All test need to be fulfilled.", () => {
+    expect(Converter.convertToString(-999999999999)).toEqual(
+      "minus nine hundred and ninety-nine billion nine hundred and ninety-nine million nine hundred and ninety-nine thousand nine hundred and ninety-nine"
+    );
+    expect(Converter.convertToString(-82075960242)).toEqual(
+      "minus eighty-two billion and seventy-five million nine hundred and sixty thousand two hundred and forty-two"
+    );
+    expect(Converter.convertToString(-100740652)).toEqual(
+      "minus one hundred million seven hundred and forty thousand six hundred and fifty-two"
+    );
+    expect(Converter.convertToString(-801506)).toEqual(
+      "minus eight hundred and one thousand five hundred and six"
+    );
+    expect(Converter.convertToString(-50000)).toEqual("minus fifty thousand");
+    expect(Converter.convertToString(-1476)).toEqual(
+      "minus fourteen hundred and seventy-six"
+    );
+    expect(Converter.convertToString(-151)).toEqual(
+      "minus one hundred and fifty-one"
+    );
     expect(Converter.convertToString(7)).toEqual("seven");
     expect(Converter.convertToString(42)).toEqual("forty-two");
     expect(Converter.convertToString(1999)).toEqual(

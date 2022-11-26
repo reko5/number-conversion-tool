@@ -36,6 +36,14 @@ const teens = [
 ];
 
 export function convertToString(number) {
+  const numberAsString = number.toString();
+
+  if (numberAsString[0] === "-") {
+    let absNumber = numberAsString.slice(1, numberAsString.length);
+
+    return "minus " + convertBillions(Number(absNumber) % 1000000000000);
+  }
+
   if (number < 1 && number > -1) return "zero";
   else return convertBillions(number);
 }
@@ -129,9 +137,7 @@ function convertHundreds(number) {
     );
   } else if (number > 99) {
     return (
-      ones[Math.floor(number / 100)] +
-      " hundred" +
-      convertTens(number % 100)
+      ones[Math.floor(number / 100)] + " hundred" + convertTens(number % 100)
     );
   } else {
     return convertTens(number);

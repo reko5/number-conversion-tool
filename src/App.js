@@ -28,12 +28,19 @@ function App() {
     const hidingDiv = document.getElementById("popIfClicked");
     const resultDiv = document.getElementById("convertedToString");
 
-    if (number === "" || number > 999999999999) {
+    if (
+      number === "" ||
+      number < -999999999999 ||
+      number > 999999999999 ||
+      (number.startsWith("0") && number.length > 1)
+    ) {
       hidingDiv.style.display = "block";
       resultDiv.style.background = "red";
       return (
-        numberRef.current.value = null,
-        setString("Please type a whole number from 0 to 999.999.999.999!"),
+        (numberRef.current.value = null),
+        setString(
+          "Please type a whole number between minus one trillion and one trillion!"
+        ),
         setMesssage(`Cannot convert ${number}!`)
       );
     }
@@ -76,7 +83,8 @@ function App() {
           <Col>
             <Badge bg="info">Info</Badge>{" "}
             <Form.Text id="hint">
-              Only works with whole numbers from 0 to 999.999.999.999
+              Only works with whole numbers between minus one trillion and one
+              trillion."
             </Form.Text>
           </Col>
         </Row>
