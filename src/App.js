@@ -13,6 +13,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const [message, setMesssage] = useState();
   const [number, setString] = useState();
   const numberRef = useRef();
 
@@ -24,20 +25,25 @@ function App() {
 
   function handleNumberConverter() {
     const number = numberRef.current.value;
-    const targetDiv = document.getElementById("popIfClicked");
-    const colorOfDiv = document.getElementById("string");
+    const hidingDiv = document.getElementById("popIfClicked");
+    const resultDiv = document.getElementById("convertedToString");
 
     if (number === "" || number > 999999999999) {
-      targetDiv.style.display = "none";
-      colorOfDiv.style.background = "red";
-      return setString("Please type a number from 0 to 999.999.999.999!");
+      hidingDiv.style.display = "block";
+      resultDiv.style.background = "red";
+      return (
+        numberRef.current.value = null,
+        setString("Please type a whole number from 0 to 999.999.999.999!"),
+        setMesssage(`Cannot convert ${number}!`)
+      );
     }
 
     setString((newString) => {
-      targetDiv.style.display = "block";
-      colorOfDiv.style.background = "green";
+      hidingDiv.style.display = "block";
+      resultDiv.style.background = "green";
       return (newString = convertToString(number));
     });
+    setMesssage(`${number} as a string is:`);
 
     numberRef.current.value = null;
   }
@@ -60,7 +66,7 @@ function App() {
                 id="myInput"
                 ref={numberRef}
                 type="number"
-                placeholder="Enter your number here"
+                placeholder="Enter your number here and press `Enter` or `Convert Number`"
                 onKeyDown={handleKeyDown}
               />
             </InputGroup>
@@ -68,9 +74,10 @@ function App() {
         </Row>
         <Row className="justify-content-md-center mb-3">
           <Col>
-            <Badge bg="info">
-              Hint: Only works with whole numbers from 0 to 999.999.999.999
-            </Badge>{" "}
+            <Badge bg="info">Info</Badge>{" "}
+            <Form.Text id="hint">
+              Only works with whole numbers from 0 to 999.999.999.999
+            </Form.Text>
           </Col>
         </Row>
         <Row className="justify-content-md-center mb-5">
@@ -86,11 +93,13 @@ function App() {
           </Col>
         </Row>
         <Row className="justify-content-md-center">
-          <div id="popIfClicked">Your number as a string is:</div>
+          <Col>
+            <div id="popIfClicked"> {message} </div>
+          </Col>
         </Row>
         <Row className="justify-content-md-center">
           <Col>
-            <div id="string">{number}</div>
+            <div id="convertedToString"> {number} </div>
           </Col>
         </Row>
       </Card>

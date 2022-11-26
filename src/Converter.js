@@ -45,19 +45,19 @@ function convertBillions(number) {
     return (
       convertBillions(Math.floor(number / 1000000000)) +
       " billion" +
-      convertBillions(number % 1000000000)
+      convertMillions(number % 1000000000)
     );
   } else if (number >= 1000000000 && number % 1000000000 < 100000000) {
     return (
       convertBillions(Math.floor(number / 1000000000)) +
       " billion and " +
-      convertBillions(number % 1000000000)
+      convertMillions(number % 1000000000)
     );
   } else if (number >= 1000000000 && number % 1000000000 < 1000000000) {
     return (
       convertBillions(Math.floor(number / 1000000000)) +
       " billion " +
-      convertBillions(number % 1000000000)
+      convertMillions(number % 1000000000)
     );
   } else {
     return convertMillions(number);
@@ -69,19 +69,19 @@ function convertMillions(number) {
     return (
       convertMillions(Math.floor(number / 1000000)) +
       " million" +
-      convertMillions(number % 1000000)
+      convertThousands(number % 1000000)
     );
   } else if (number >= 1000000 && number % 1000000 < 100000) {
     return (
       convertMillions(Math.floor(number / 1000000)) +
       " million and " +
-      convertMillions(number % 1000000)
+      convertThousands(number % 1000000)
     );
   } else if (number >= 1000000 && number % 1000000 < 1000000) {
     return (
       convertMillions(Math.floor(number / 1000000)) +
       " million " +
-      convertMillions(number % 1000000)
+      convertThousands(number % 1000000)
     );
   } else {
     return convertThousands(number);
@@ -101,19 +101,19 @@ function convertThousands(number) {
     return (
       convertThousands(Math.floor(number / 1000)) +
       " thousand" +
-      convertThousands(number % 1000)
+      convertHundreds(number % 1000)
     );
   } else if (number >= 1000 && number % 1000 < 100) {
     return (
       convertThousands(Math.floor(number / 1000)) +
       " thousand and " +
-      convertThousands(number % 1000)
+      convertHundreds(number % 1000)
     );
   } else if (number >= 1000 && number % 1000 < 1000) {
     return (
       convertThousands(Math.floor(number / 1000)) +
       " thousand " +
-      convertThousands(number % 1000)
+      convertHundreds(number % 1000)
     );
   } else {
     return convertHundreds(number);
@@ -125,13 +125,13 @@ function convertHundreds(number) {
     return (
       ones[Math.floor(number / 100)] +
       " hundred and " +
-      convertHundreds(number % 100)
+      convertTens(number % 100)
     );
   } else if (number > 99) {
     return (
       ones[Math.floor(number / 100)] +
       " hundred" +
-      convertHundreds(number % 100)
+      convertTens(number % 100)
     );
   } else {
     return convertTens(number);

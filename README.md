@@ -1,3 +1,4 @@
+
 # Arabic number conversion tool
 
 Create a web-based solution that converts numeric input into the English phrase of that number. 
@@ -17,13 +18,13 @@ For example:
 Note: Numbers greater than 100 may include the word "and" between the hundreds figure and the rest of the number. Figure out the pattern and implement the solution accordingly.
 
 Treat this task like a project to create a real-life application, focus on other aspects too, not just the code:
-- Fork this project.
-- Use the best stack matching the simplicity of the task.
-- Don't use external libraries for the conversion.
-- Make the solution pleasant to look at and user friendly in as many aspects as you can.
-- Commit the important milestones and not just the final result.
-- Don't forget to write tests. We expect the tests to check also the examples above.
-- Try to support numbers as high as you can.
-- (Optional) Try to support British English counting where numbers between 1000 and 2000 are said out using "hundreds". E.g. 1999 === nineteen hundred and ninety-nine
+- Fork this project. -> (Done)
+- Use the best stack matching the simplicity of the task. -> (Done: react.js)
+- Don't use external libraries for the conversion. -> (Done)
+- Make the solution pleasant to look at and user friendly in as many aspects as you can. -> 
+- Commit the important milestones and not just the final result. -> (Done)
+- Don't forget to write tests. We expect the tests to check also the examples above. -> (Done)
+- Try to support numbers as high as you can. -> (Done)
+- (Optional) Try to support British English counting where numbers between 1000 and 2000 are said out using "hundreds". E.g. 1999 === nineteen hundred and ninety-nine -> (Done)
 
 Thank you for your time and happy coding! 🧑‍💻
