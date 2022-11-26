@@ -1,5 +1,5 @@
 const ones = [
-  "",
+  "zero",
   "one",
   "two",
   "three",
@@ -36,15 +36,33 @@ const teens = [
 ];
 
 export function convertToString(number) {
-  if (number < 1 && number > -1) return "zero";
+  let numberAsString = number.toString();
 
-  const numberAsString = number.toString();
+  if (Number(number) === 0) return "zero";
 
-  if (numberAsString[0] === "-") {
+  if (numberAsString.includes(".")) {
+    const indexOfDot = numberAsString.indexOf(".");
+    const wholeNumber = numberAsString.substring(0, indexOfDot);
+    const fractionNumber = numberAsString.substring(
+      indexOfDot + 1,
+      numberAsString.length
+    );
+    return (
+      convertMinus(wholeNumber) + " point " + fractureToString(fractionNumber)
+    );
+  } else return convertMinus(number);
+}
+
+function convertMinus(number) {
+  let numberAsString = number.toString();
+
+  if (numberAsString.startsWith("-0")) {
     let absNumber = numberAsString.slice(1, numberAsString.length);
-
-    return "minus " + convertBillions(Number(absNumber) % 1000000000000);
-  } else return convertBillions(number);
+    return "minus zero" + convertBillions(absNumber % 1000000000000);
+  } else if (numberAsString.startsWith("-")) {
+    let absNumber = numberAsString.slice(1, numberAsString.length);
+    return "minus " + convertBillions(absNumber % 1000000000000);
+  } else return convertBillions(numberAsString);
 }
 
 function convertBillions(number) {
@@ -144,10 +162,22 @@ function convertHundreds(number) {
 }
 
 function convertTens(number) {
+  if (number === 0) return "";
   if (number < 10) return ones[number];
   else if (number >= 10 && number < 20) return teens[number - 10];
   else if (number % 10 === 0) return tens[number / 10];
   else {
     return tens[Math.floor(number / 10)] + "-" + ones[number % 10];
   }
+}
+
+function fractureToString(fraction) {
+  let fractionToString = "";
+
+  for (let i = 0; i < fraction.length; i++) {
+    if (i <= fraction.length - 2)
+      fractionToString += convertTens(fraction[i]) + " ";
+    else fractionToString += convertTens(fraction[i]);
+  }
+  return fractionToString;
 }

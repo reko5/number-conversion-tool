@@ -28,25 +28,42 @@ function App() {
     const hidingDiv = document.getElementById("popIfClicked");
     const resultDiv = document.getElementById("convertedToString");
 
-    if (
-      number === "" ||
-      number < -999999999999 ||
-      number > 999999999999 ||
-      (number.startsWith("0") && number.length > 1)
-    ) {
+    if (number === "" || number > 999999999999 || number < -999999999999) {
       hidingDiv.style.display = "block";
       resultDiv.style.background = "red";
       return (
         (numberRef.current.value = null),
         setString(
-          "Please type a whole number between minus one trillion and one trillion!"
+          "Please type a number from minus one trillion to one trillion with maximum of five fraction characters!"
         ),
         setMesssage(`Cannot convert ${number}!`)
       );
     }
 
+    if (
+      (number.length !== 1 && number[0] === "0" && number[1] !== ".") ||
+      number[0] === "."
+    ) {
+      resultDiv.style.background = "red";
+      return (
+        (numberRef.current.value = null),
+        setString(
+          "Please use this example for proper decimal number input: 0.123"
+        ),
+        setMesssage(`Cannot convert ${number}!`)
+      );
+    }
+
+    if (number.slice(number.indexOf("."), number.length).length > 6) {
+      resultDiv.style.background = "red";
+      return (
+        (numberRef.current.value = null),
+        setString("Please use maximum of five fraction characters!"),
+        setMesssage(`Cannot convert ${number}!`)
+      );
+    }
+
     setString((newString) => {
-      hidingDiv.style.display = "block";
       resultDiv.style.background = "green";
       return (newString = convertToString(number));
     });
@@ -83,8 +100,8 @@ function App() {
           <Col>
             <Badge bg="info">Info</Badge>{" "}
             <Form.Text id="hint">
-              Only works with whole numbers between minus one trillion and one
-              trillion."
+              Only works on numbers from minus one trillion to one trillion with
+              maximum of five fraction characters.
             </Form.Text>
           </Col>
         </Row>
