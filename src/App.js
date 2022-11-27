@@ -25,13 +25,26 @@ function App() {
 
   function handleNumberConverter() {
     let number = numberRef.current.value;
-    const hidingDiv = document.getElementById("popIfClicked");
     const resultDiv = document.getElementById("convertedToString");
-    const fractinalsLength =
+    const fractionalsLength =
       number.slice(number.indexOf("."), number.length).length - 1;
 
+    if (
+      (number.length !== 1 && number[0] === "0" && number[1] !== ".") ||
+      number[0] === "." ||
+      (number[0] === "-" && (number[1] === "0") & (number[2] !== "."))
+    ) {
+      resultDiv.style.background = "red";
+      return (
+        (numberRef.current.value = null),
+        setString(
+          "Please watch this example for proper decimal number input: 0.123 or -0.123"
+        ),
+        setMesssage(`Cannot convert ${number}!`)
+      );
+    }
+
     if (number === "" || number > 999999999999 || number < -999999999999) {
-      hidingDiv.style.display = "block";
       resultDiv.style.background = "red";
       return (
         (numberRef.current.value = null),
@@ -42,21 +55,7 @@ function App() {
       );
     }
 
-    if (
-      (number.length !== 1 && number[0] === "0" && number[1] !== ".") ||
-      number[0] === "."
-    ) {
-      resultDiv.style.background = "red";
-      return (
-        (numberRef.current.value = null),
-        setString(
-          "Please watch this example for proper decimal number input: 0.123"
-        ),
-        setMesssage(`Cannot convert ${number}!`)
-      );
-    }
-
-    if (fractinalsLength > 5) {
+    if (fractionalsLength > 5) {
       resultDiv.style.background = "red";
       return (
         (numberRef.current.value = null),
