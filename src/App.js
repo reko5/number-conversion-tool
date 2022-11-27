@@ -24,9 +24,11 @@ function App() {
   }
 
   function handleNumberConverter() {
-    const number = numberRef.current.value;
+    let number = numberRef.current.value;
     const hidingDiv = document.getElementById("popIfClicked");
     const resultDiv = document.getElementById("convertedToString");
+    const fractinalsLength =
+      number.slice(number.indexOf("."), number.length).length - 1;
 
     if (number === "" || number > 999999999999 || number < -999999999999) {
       hidingDiv.style.display = "block";
@@ -34,7 +36,7 @@ function App() {
       return (
         (numberRef.current.value = null),
         setString(
-          "Please type a number from minus one trillion to one trillion with maximum of five fraction characters!"
+          "Please type a number from minus one trillion to one trillion with maximum of five fractional characters!"
         ),
         setMesssage(`Cannot convert ${number}!`)
       );
@@ -48,19 +50,28 @@ function App() {
       return (
         (numberRef.current.value = null),
         setString(
-          "Please use this example for proper decimal number input: 0.123"
+          "Please watch this example for proper decimal number input: 0.123"
         ),
         setMesssage(`Cannot convert ${number}!`)
       );
     }
 
-    if (number.slice(number.indexOf("."), number.length).length > 6) {
+    if (fractinalsLength > 5) {
       resultDiv.style.background = "red";
       return (
         (numberRef.current.value = null),
-        setString("Please use maximum of five fraction characters!"),
+        setString("Please use maximum of five fractional characters!"),
         setMesssage(`Cannot convert ${number}!`)
       );
+    }
+
+    if (number.includes(".")) {
+      for (let i = number.length; i > number.indexOf("."); i--) {
+        if (number[i] === "0" && number[number.length - 1] === "0")
+          number = number.slice(0, i);
+      }
+      if (number[number.length - 1] === ".")
+        number = number.slice(0, number.length - 1);
     }
 
     setString((newString) => {
@@ -101,7 +112,7 @@ function App() {
             <Badge bg="info">Info</Badge>{" "}
             <Form.Text id="hint">
               Only works on numbers from minus one trillion to one trillion with
-              maximum of five fraction characters.
+              maximum of five fractional characters.
             </Form.Text>
           </Col>
         </Row>
