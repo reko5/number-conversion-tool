@@ -36,7 +36,7 @@ const teens = [
 ];
 
 export function convertToString(number) {
-  let numberAsString = number.toString();
+  const numberAsString = number.toString();
 
   if (Number(number) === 0) return "zero";
 
@@ -54,13 +54,13 @@ export function convertToString(number) {
 }
 
 function convertMinus(number) {
-  let numberAsString = number.toString();
+  const numberAsString = number.toString();
 
   if (numberAsString.startsWith("-0")) {
-    let absNumber = numberAsString.slice(1, numberAsString.length);
+    const absNumber = numberAsString.slice(1, numberAsString.length);
     return "minus zero" + convertBillions(absNumber % 1000000000000);
   } else if (numberAsString.startsWith("-")) {
-    let absNumber = numberAsString.slice(1, numberAsString.length);
+    const absNumber = numberAsString.slice(1, numberAsString.length);
     return "minus " + convertBillions(absNumber % 1000000000000);
   } else return convertBillions(numberAsString);
 }
@@ -174,10 +174,10 @@ function convertTens(number) {
 function fractureToString(fraction) {
   let fractionToString = "";
 
-  for (let i = 0; i < fraction.length; i++) {
-    if (i <= fraction.length - 2)
-      fractionToString += convertTens(fraction[i]) + " ";
-    else fractionToString += convertTens(fraction[i]);
+  for (let index = 0; index < fraction.length; index++) {
+    if (index <= fraction.length - 2)
+      fractionToString += convertTens(fraction[index]) + " ";
+    else fractionToString += convertTens(fraction[index]);
   }
   return fractionToString;
 }

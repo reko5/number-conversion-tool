@@ -66,9 +66,9 @@ function App() {
     }
 
     if (number.includes(".")) {
-      for (let i = number.length; i > number.indexOf("."); i--) {
-        if (number[i] === "0" && number[number.length - 1] === "0")
-          number = number.slice(0, i);
+      for (let index = number.length; index > number.indexOf("."); index--) {
+        if (number[index] === "0" && number[number.length - 1] === "0")
+          number = number.slice(0, index);
       }
       if (number[number.length - 1] === ".")
         number = number.slice(0, number.length - 1);
