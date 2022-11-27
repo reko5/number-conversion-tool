@@ -29,21 +29,6 @@ function App() {
     const fractionalsLength =
       number.slice(number.indexOf("."), number.length).length - 1;
 
-    if (
-      (number.length !== 1 && number[0] === "0" && number[1] !== ".") ||
-      number[0] === "." ||
-      (number[0] === "-" && (number[1] === "0") & (number[2] !== "."))
-    ) {
-      resultDiv.style.background = "red";
-      return (
-        (numberRef.current.value = null),
-        setString(
-          "Please watch this example for proper decimal number input: 0.123 or -0.123"
-        ),
-        setMesssage(`Cannot convert ${number}!`)
-      );
-    }
-
     if (number === "" || number > 999999999999 || number < -999999999999) {
       resultDiv.style.background = "red";
       return (
@@ -53,9 +38,20 @@ function App() {
         ),
         setMesssage(`Cannot convert ${number}!`)
       );
-    }
-
-    if (fractionalsLength > 5) {
+    } else if (
+      (number.length !== 1 && number[0] === "0" && number[1] !== ".") ||
+      number[0] === "." ||
+      (number[0] === "-" && (number[1] === "0") & (number[2] !== "."))
+    ) {
+      resultDiv.style.background = "red";
+      return (
+        (numberRef.current.value = null),
+        setString(
+          "Please watch this example for proper fractional number input: 0.123 or -0.123"
+        ),
+        setMesssage(`Cannot convert ${number}!`)
+      );
+    } else if (fractionalsLength > 5) {
       resultDiv.style.background = "red";
       return (
         (numberRef.current.value = null),

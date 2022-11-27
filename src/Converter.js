@@ -39,7 +39,6 @@ export function convertToString(number) {
   const numberAsString = number.toString();
 
   if (Number(number) === 0) return "zero";
-
   if (numberAsString.includes(".")) {
     const indexOfDot = numberAsString.indexOf(".");
     const wholeNumber = numberAsString.substring(0, indexOfDot);
