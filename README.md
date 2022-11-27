@@ -10,11 +10,13 @@ Commits have been made after every important addition.
 
 I made a simple and smooth user interface with all the informations that the user need for easy usability of the app:
 
-![alt text](https://github.com/reko5/number-converter-tool/tree/main/public/NumberConverter1.jpg?raw=true)
 
-![alt text](https://github.com/reko5/number-converter-tool/tree/main/public/NumberConverter2.jpg?raw=true)
 
-![alt text](https://github.com/reko5/number-converter-tool/tree/main/public/NumberConverter3.jpg?raw=true)
+![Default User Intarface](https://github.com/reko5/number-converter-tool/tree/main/public/NumberConverter1.jpg?raw=true)
+
+![UI after successful conversion](https://github.com/reko5/number-converter-tool/tree/main/public/NumberConverter2.jpg?raw=true)
+
+![UI after validation failed](https://github.com/reko5/number-converter-tool/tree/main/public/NumberConverter3.jpg?raw=true)
 
 <h2>Tech stack that I used:</h2>
 -----------------------------------
