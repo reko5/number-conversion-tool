@@ -19,7 +19,6 @@ I made a simple and smooth user interface with all the informations that the use
 ![UI after validation failed](https://github.com/reko5/number-converter-tool/tree/main/public/NumberConverter3.jpg?raw=true)
 
 <h2>Tech stack that I used:</h2>
------------------------------------
 
 - framework: React
 - JavaScript
@@ -31,7 +30,6 @@ I made a simple and smooth user interface with all the informations that the use
 These are above the requirements for running the application in a browser. I used Google Chrome (version: 107.0.5304.107).
 
 <h2>List of features:</h2>
---------------------------
 
 App.js:
 - Added HTML elements and CSS properties with Bootstrap
